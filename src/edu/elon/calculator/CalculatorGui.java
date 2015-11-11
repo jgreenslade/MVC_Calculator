@@ -15,7 +15,9 @@ public class CalculatorGui extends JFrame implements Observer{
 	
 	private JButton[][] buttons;
 	
-	public CalculatorGui() {
+	public CalculatorGui(CalculatorControllerInterface controller, CalculatorModelInterface model) {
+		this.controller = controller;
+		this.model = model;
 		createView();
 	}
 
@@ -52,7 +54,9 @@ public class CalculatorGui extends JFrame implements Observer{
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		            if (e.getSource() instanceof JButton) {
+		            	
 		                String text = e.getActionCommand();
+		                //System.out.println("run");
 		                controller.buttonPressed(text);
 		            }
 		        }
