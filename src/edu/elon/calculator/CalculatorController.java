@@ -1,7 +1,5 @@
 package edu.elon.calculator;
 
-import java.util.concurrent.TimeUnit;
-
 public class CalculatorController implements CalculatorControllerInterface {
 
 	private CalculatorGui view;
@@ -62,9 +60,9 @@ public class CalculatorController implements CalculatorControllerInterface {
 	}
 
 	private Double addDecimal(int digit) {
-		if (model.getCurrentValue()== null) {
+		if (model.getCurrentValue() == null) {
 			return digit / 10.0;
-		} else if((model.getCurrentValue() % 1) == 0) {
+		} else if ((model.getCurrentValue() % 1) == 0) {
 			return model.getCurrentValue() + digit / 10.0;
 		}
 		String sTemp = model.getCurrentValue() + "" + digit;
@@ -72,15 +70,7 @@ public class CalculatorController implements CalculatorControllerInterface {
 	}
 
 	private void enteredInvalidInput() {
-		view.disableAllButtons();
-
-		long lastTime = System.currentTimeMillis();
-		while (System.currentTimeMillis() - lastTime < 1000) {
-			// do nothing
-		}
-
-		view.enableAllButtons();
-		view.setScreenText("" + model.getCurrentValue());
+		view.setScreenText("INVALID");
 	}
 
 }

@@ -12,22 +12,19 @@ public interface CalculatorModelInterface {
 	
 	public boolean hasChanged();
 	
-	public void evaluate() ;
-	
 	public Double getValue1() ;
+	
+	public Double getValue2();
 
 	public void setValue1(Double value1);
 
-	public Double getValue2();
-
 	public void setValue2(Double value2);
-
-	public String getOperator() ;
 
 	public void setOperator(String operator);
 
-	public Double getResult();
+	public String getOperator();
 	
 	public Double getCurrentValue();
 	
+	public void evaluate() ;
 }
