@@ -14,10 +14,12 @@ public class CalculatorGui extends JFrame implements Observer{
 	CalculatorModelInterface model;
 	
 	private JButton[][] buttons;
+	private JTextField screen;
 	
 	public CalculatorGui(CalculatorControllerInterface controller, CalculatorModelInterface model) {
 		this.controller = controller;
 		this.model = model;
+		model.addObserver(this);
 		createView();
 	}
 
@@ -40,7 +42,7 @@ public class CalculatorGui extends JFrame implements Observer{
 		
 		addListeners();
 		
-		c.add(new JTextField(), BorderLayout.NORTH);
+		c.add(screen = new JTextField(), BorderLayout.NORTH);
 		c.add(buttonPanel);
 		this.pack();
 		this.repaint();
@@ -71,7 +73,7 @@ public class CalculatorGui extends JFrame implements Observer{
 
 	@Override
 	public void update(CalculatorModelInterface o) {
-		
+		screen.setText("" + o.getCurrentValue());
 	}
 
 }
