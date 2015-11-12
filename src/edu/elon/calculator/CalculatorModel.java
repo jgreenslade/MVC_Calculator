@@ -12,7 +12,7 @@ public class CalculatorModel implements CalculatorModelInterface {
 
 	private Double result;
 	private Double currentValue;
-	
+
 	public Double getValue1() {
 		return value1;
 	}
@@ -30,7 +30,7 @@ public class CalculatorModel implements CalculatorModelInterface {
 
 	public void setValue2(Double value2) {
 		this.value2 = value2;
-		currentValue = this.value1;
+		currentValue = this.value2;
 		setChanged();
 		notifyObservers();
 	}
@@ -91,8 +91,12 @@ public class CalculatorModel implements CalculatorModelInterface {
 				result = value1 / value2;
 			}
 		}
+		currentValue = result;
 		setChanged();
 		notifyObservers();
+		value1 = null;
+		value2 = null;
+		currentValue = null;
 	}
 
 	@Override
